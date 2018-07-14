@@ -23,6 +23,18 @@ server.get('/songs', (request, response) => {
   })
 })
 
+
+server.post('/songs', (request, response) => {
+  const body = JSON.parse(request.body)
+  Song.create(body).then(song =>{
+    response.send(body)
+    response.end()
+  })
+})
+
+
+
+
 server.listen(port, () => {
   console.log(`Verizon stub server running on port ${port}`)
 })
